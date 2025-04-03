@@ -1,8 +1,9 @@
 .pio
-.vscode
 build
 script
 test
 SX126x_Transmit
 config
 
+/.vscode/*
+!/.vscode/settings.json
