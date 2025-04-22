@@ -2,6 +2,7 @@
 
 写个啥呢？
 
+- [ ] a game?
 - [ ] 通讯录？
 - [ ] lisp-like 编译器？
 - [ ] lambda calculus
