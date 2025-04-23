@@ -4,8 +4,11 @@
 
 Decide!
 
-- [ ] shader/3d stuff!
+I want something to look at!
+
+- [x] shader/3d stuff!
 - [ ] a game?
+
 - [ ] 通讯录？
 - [ ] lisp-like 编译器？
 - [ ] lambda calculus
