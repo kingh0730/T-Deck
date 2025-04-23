@@ -4,6 +4,7 @@
 
 Decide!
 
+- [ ] shader/3d stuff!
 - [ ] a game?
 - [ ] 通讯录？
 - [ ] lisp-like 编译器？
