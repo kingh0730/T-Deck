@@ -21,6 +21,11 @@ float sigmoid(float x)
     return 1.0f / (1.0f + expf(-x));
 }
 
+float forward(float w1, float w2, float b, float x1, float x2)
+{
+    return sigmoid(x1 * w1 + x2 * w2 + b);
+}
+
 float cost(float w1, float w2, float b)
 {
     float cost = 0.0f;
@@ -29,7 +34,7 @@ float cost(float w1, float w2, float b)
         float x1 = train[i][0];
         float x2 = train[i][1];
         float y = train[i][2];
-        float z = sigmoid(x1 * w1 + x2 * w2 + b);
+        float z = forward(w1, w2, b, x1, x2);
         float d = z - y;
         cost += d * d;
         // printf("x: %f, y: %f, z: %f, d: %f\n", x, y, z, d);
@@ -75,7 +80,7 @@ void classify(void)
         float x1 = train[i][0];
         float x2 = train[i][1];
         float y = train[i][2];
-        float z = sigmoid(x1 * w1 + x2 * w2 + b);
+        float z = forward(w1, w2, b, x1, x2);
         printf("x1: %f, x2: %f, y: %f, z: %f\n", x1, x2, y, z);
     }
 }
