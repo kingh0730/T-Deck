@@ -1,3 +1,6 @@
-g++ -o main main.cpp ../classifier/classifier.cpp
+g++ \
+    ../classifier/classifier.cpp \
+    main.cpp \
+    -o main
 
 ./main
