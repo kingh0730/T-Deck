@@ -2,11 +2,24 @@
 #include <stdlib.h>
 #include <math.h>
 
+typedef struct Xor
+{
+    float or_w1;
+    float or_w2;
+    float or_b;
+    float nand_w1;
+    float nand_w2;
+    float nand_b;
+    float and_w1;
+    float and_w2;
+    float and_b;
+} Xor;
+
 float train[][3] = {
     {0, 0, 0},
-    {0, 1, 0},
-    {1, 0, 0},
-    {1, 1, 1},
+    {0, 1, 1},
+    {1, 0, 1},
+    {1, 1, 0},
 };
 
 #define TRAIN_SIZE (sizeof(train) / sizeof(train[0]))
