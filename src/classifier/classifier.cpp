@@ -68,4 +68,14 @@ void classify(void)
     }
 
     printf("w1: %f, w2: %f, b: %f\n", w1, w2, b);
+    printf("cost: %f\n", cost(w1, w2, b));
+
+    for (size_t i = 0; i < TRAIN_SIZE; i++)
+    {
+        float x1 = train[i][0];
+        float x2 = train[i][1];
+        float y = train[i][2];
+        float z = sigmoid(x1 * w1 + x2 * w2 + b);
+        printf("x1: %f, x2: %f, y: %f, z: %f\n", x1, x2, y, z);
+    }
 }
