@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <SPI.h>
 #include <TFT_eSPI.h>
-#include "utilities.h"
+#include "_main.h"
 #include "_loop.h"
 
 typedef struct
@@ -114,7 +114,7 @@ void setup()
 
     tft.setTextDatum(MC_DATUM);
     tft.setFreeFont(&FreeSansOblique12pt7b);
-    tft.drawString("Hello World", TFT_WIDTH / 2, TFT_HEIGHT / 2);
+    tft.drawString("Hello, classifier!", TFT_WIDTH / 2, TFT_HEIGHT / 2);
 
     pinMode(BOARD_BL_PIN, OUTPUT);
     for (int i = 0; i <= 16; ++i)
