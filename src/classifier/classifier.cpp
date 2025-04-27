@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-float train[][2] = {
-    {0, 0},
-    {1, 2},
-    {2, 4},
-    {3, 6},
-    {4, 8},
+float train[][3] = {
+    {0, 0, 0},
+    {0, 1, 0},
+    {1, 0, 0},
+    {1, 1, 1},
 };
 
 #define TRAIN_SIZE (sizeof(train) / sizeof(train[0]))
@@ -16,14 +15,15 @@ float rand_float(void)
     return (float)rand() / (float)(RAND_MAX);
 }
 
-float cost(float w, float b)
+float cost(float w1, float w2, float b)
 {
     float cost = 0.0f;
     for (size_t i = 0; i < TRAIN_SIZE; i++)
     {
-        float x = train[i][0];
-        float y = train[i][1];
-        float z = x * w + b;
+        float x1 = train[i][0];
+        float x2 = train[i][1];
+        float y = train[i][2];
+        float z = x1 * w1 + x2 * w2 + b;
         float d = z - y;
         cost += d * d;
         // printf("x: %f, y: %f, z: %f, d: %f\n", x, y, z, d);
@@ -38,11 +38,12 @@ void classify(void)
 
     printf("TRAIN_SIZE: %zu\n", TRAIN_SIZE);
 
-    float w = rand_float() * 10.0f;
+    float w1 = rand_float() * 10.0f;
+    float w2 = rand_float() * 10.0f;
     float b = rand_float() * 5.0f;
-    printf("w: %f, b: %f\n", w, b);
+    printf("w1: %f, w2: %f, b: %f\n", w1, w2, b);
 
-    float cost_value = cost(w, b);
+    float cost_value = cost(w1, w2, b);
     printf("cost: %f\n", cost_value);
 
     float epsilon = 0.01f;
@@ -50,13 +51,15 @@ void classify(void)
 
     for (size_t i = 0; i < 500; i++)
     {
-        float dw = (cost(w + epsilon, b) - cost(w, b)) / epsilon;
-        float db = (cost(w, b + epsilon) - cost(w, b)) / epsilon;
+        float dw1 = (cost(w1 + epsilon, w2, b) - cost(w1, w2, b)) / epsilon;
+        float dw2 = (cost(w1, w2 + epsilon, b) - cost(w1, w2, b)) / epsilon;
+        float db = (cost(w1, w2, b + epsilon) - cost(w1, w2, b)) / epsilon;
         // printf("dw: %f, db: %f\n", dw, db);
 
-        w -= alpha * dw;
+        w1 -= alpha * dw1;
+        w2 -= alpha * dw2;
         b -= alpha * db;
     }
 
-    printf("w: %f, b: %f\n", w, b);
+    printf("w1: %f, w2: %f, b: %f\n", w1, w2, b);
 }
