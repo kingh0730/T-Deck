@@ -62,10 +62,14 @@ void classify(void)
 
     for (size_t i = 0; i < 1 * 1000 * 1000; i++)
     {
-        float dw1 = (cost(w1 + epsilon, w2, b) - cost(w1, w2, b)) / epsilon;
-        float dw2 = (cost(w1, w2 + epsilon, b) - cost(w1, w2, b)) / epsilon;
-        float db = (cost(w1, w2, b + epsilon) - cost(w1, w2, b)) / epsilon;
-        // printf("dw: %f, db: %f\n", dw, db);
+        float c = cost(w1, w2, b);
+        // * Plot
+        // printf("%f\n", c);
+
+        float dw1 = (cost(w1 + epsilon, w2, b) - c) / epsilon;
+        float dw2 = (cost(w1, w2 + epsilon, b) - c) / epsilon;
+        float db = (cost(w1, w2, b + epsilon) - c) / epsilon;
+        // printf("dw1: %f, dw2: %f, db: %f\n", dw1, dw2, db);
 
         w1 -= alpha * dw1;
         w2 -= alpha * dw2;
