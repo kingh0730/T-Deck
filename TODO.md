@@ -6,7 +6,10 @@ Decide!
 
 I want something to look at!
 
-- [x] shader/3d stuff!
+- [ ] ML
+- [ ] tokenizer
+
+- [ ] shader/3d stuff!
 - [ ] a game?
 
 - [ ] 通讯录？
