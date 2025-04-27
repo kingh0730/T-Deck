@@ -127,6 +127,6 @@ void loop()
 {
     tft.setTextColor(random(0xFFFF));
     tft.fillScreen(TFT_BLACK);
-    tft.drawString("Hello World", random(5, 320), random(5, 240));
+    tft.drawString("Hello cpp", random(5, 320), random(5, 240));
     delay(5000);
 }
