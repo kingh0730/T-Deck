@@ -3,7 +3,8 @@
 #include <TFT_eSPI.h>
 #include "utilities.h"
 
-typedef struct {
+typedef struct
+{
     uint8_t cmd;
     uint8_t data[14];
     uint8_t len;
@@ -26,12 +27,12 @@ lcd_cmd_t lcd_st7789v[] = {
     {0xD6, {0XA1}, 1},
     {0xE0, {0XD0, 0X0D, 0X14, 0X0D, 0X0D, 0X09, 0X38, 0X44, 0X4E, 0X3A, 0X17, 0X18, 0X2F, 0X30}, 14},
     {0xE1, {0XD0, 0X09, 0X0F, 0X08, 0X07, 0X14, 0X37, 0X44, 0X4D, 0X38, 0X15, 0X16, 0X2C, 0X3E}, 14},
-    {0x21, {0}, 0}, //invertDisplay
+    {0x21, {0}, 0}, // invertDisplay
     {0x29, {0}, 0},
     {0x2C, {0}, 0},
 };
 
-TFT_eSPI  tft;
+TFT_eSPI tft;
 
 // LilyGo  T-Deck  control backlight chip has 16 levels of adjustment range
 // The adjustable range is 0~15, 0 is the minimum brightness, 16 is the maximum brightness
@@ -39,13 +40,15 @@ void setBrightness(uint8_t value)
 {
     static uint8_t level = 0;
     static uint8_t steps = 16;
-    if (value == 0) {
+    if (value == 0)
+    {
         digitalWrite(BOARD_BL_PIN, 0);
         delay(3);
         level = 0;
         return;
     }
-    if (level == 0) {
+    if (level == 0)
+    {
         digitalWrite(BOARD_BL_PIN, 1);
         level = steps;
         delayMicroseconds(30);
@@ -53,13 +56,13 @@ void setBrightness(uint8_t value)
     int from = steps - level;
     int to = steps - value;
     int num = (steps + to - from) % steps;
-    for (int i = 0; i < num; i++) {
+    for (int i = 0; i < num; i++)
+    {
         digitalWrite(BOARD_BL_PIN, 0);
         digitalWrite(BOARD_BL_PIN, 1);
     }
     level = value;
 }
-
 
 void setup()
 {
@@ -81,7 +84,7 @@ void setup()
     digitalWrite(BOARD_TFT_CS, HIGH);
 
     pinMode(BOARD_SPI_MISO, INPUT_PULLUP);
-    SPI.begin(BOARD_SPI_SCK, BOARD_SPI_MISO, BOARD_SPI_MOSI); //SD
+    SPI.begin(BOARD_SPI_SCK, BOARD_SPI_MISO, BOARD_SPI_MOSI); // SD
 
     Serial.print("Init display id:");
     Serial.println(USER_SETUP_ID);
@@ -105,16 +108,16 @@ void setup()
     }
 #endif
 
-    tft.setRotation( 1 );
+    tft.setRotation(1);
     tft.fillScreen(TFT_BLACK);
 
     tft.setTextDatum(MC_DATUM);
     tft.setFreeFont(&FreeSansOblique12pt7b);
     tft.drawString("Hello World", TFT_WIDTH / 2, TFT_HEIGHT / 2);
 
-
     pinMode(BOARD_BL_PIN, OUTPUT);
-    for (int i = 0; i <= 16; ++i) {
+    for (int i = 0; i <= 16; ++i)
+    {
         setBrightness(i);
         delay(30);
     }
@@ -127,4 +130,3 @@ void loop()
     tft.drawString("Hello World", random(5, 320), random(5, 240));
     delay(5000);
 }
-
