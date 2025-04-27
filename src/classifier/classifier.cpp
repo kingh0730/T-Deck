@@ -19,6 +19,8 @@ void classify(void)
 {
     srand(730);
 
+    printf("TRAIN_SIZE: %zu\n", TRAIN_SIZE);
+
     float w = rand_float() * 10.0f;
     printf("w: %f\n", w);
 
