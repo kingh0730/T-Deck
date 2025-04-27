@@ -42,4 +42,8 @@ void classify(void)
 
     float cost_value = cost(w);
     printf("cost: %f\n", cost_value);
+
+    float epsilon = 0.01f;
+    float cost_value2 = cost(w + epsilon);
+    printf("cost: %f\n", cost_value2);
 }
