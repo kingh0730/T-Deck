@@ -153,31 +153,22 @@ void classify(void)
     float epsilon = 0.01f;
     float alpha = 0.01f;
 
+    print_xor(m);
     for (size_t i = 0; i < 1 * 1000 * 1000; i++)
     {
-        float c = cost(w1, w2, b);
-        // * Plot
-        // printf("%f\n", c);
-
-        float dw1 = (cost(w1 + epsilon, w2, b) - c) / epsilon;
-        float dw2 = (cost(w1, w2 + epsilon, b) - c) / epsilon;
-        float db = (cost(w1, w2, b + epsilon) - c) / epsilon;
-        // printf("dw1: %f, dw2: %f, db: %f\n", dw1, dw2, db);
-
-        w1 -= alpha * dw1;
-        w2 -= alpha * dw2;
-        b -= alpha * db;
+        Xor g = gradient(m, epsilon);
+        learn(m, g, alpha);
     }
+    print_xor(m);
 
-    printf("w1: %f, w2: %f, b: %f\n", w1, w2, b);
-    printf("cost: %f\n", cost(w1, w2, b));
+    printf("cost: %f\n", cost(m));
 
     for (size_t i = 0; i < TRAIN_SIZE; i++)
     {
         float x1 = train[i][0];
         float x2 = train[i][1];
         float y = train[i][2];
-        float z = forward(w1, w2, b, x1, x2);
+        float z = forward(m, x1, x2);
         printf("x1: %f, x2: %f, y: %f, z: %f\n", x1, x2, y, z);
     }
 }
