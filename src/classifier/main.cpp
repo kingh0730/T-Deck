@@ -2,6 +2,7 @@
 #include <SPI.h>
 #include <TFT_eSPI.h>
 #include "utilities.h"
+#include "_loop.h"
 
 typedef struct
 {
@@ -125,8 +126,5 @@ void setup()
 
 void loop()
 {
-    tft.setTextColor(random(0xFFFF));
-    tft.fillScreen(TFT_BLACK);
-    tft.drawString("Hello cpp", random(5, 320), random(5, 240));
-    delay(5000);
+    _loop(tft);
 }
