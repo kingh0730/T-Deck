@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 float train[][2] = {
     {0, 0},
