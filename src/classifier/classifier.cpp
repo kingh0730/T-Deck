@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 float train[][3] = {
     {0, 0, 0},
@@ -13,6 +14,11 @@ float train[][3] = {
 float rand_float(void)
 {
     return (float)rand() / (float)(RAND_MAX);
+}
+
+float sigmoid(float x)
+{
+    return 1.0f / (1.0f + expf(-x));
 }
 
 float cost(float w1, float w2, float b)
