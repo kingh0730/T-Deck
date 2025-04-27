@@ -96,9 +96,6 @@ void classify(void)
 
     printf("TRAIN_SIZE: %zu\n", TRAIN_SIZE);
 
-    float cost_value = cost(m);
-    printf("cost: %f\n", cost_value);
-
     float epsilon = 0.01f;
     float alpha = 0.01f;
 
