@@ -44,6 +44,16 @@ void classify(void)
     printf("cost: %f\n", cost_value);
 
     float epsilon = 0.01f;
-    float cost_value2 = cost(w + epsilon);
-    printf("cost: %f\n", cost_value2);
+    float alpha = 0.01f;
+
+    for (size_t i = 0; i < 2; i++)
+    {
+        float cost_value = cost(w);
+        float cost_value2 = cost(w + epsilon);
+        float dcost = (cost_value2 - cost_value) / epsilon;
+        printf("dcost: %f\n", dcost);
+
+        w -= alpha * dcost;
+        printf("w: %f\n", w);
+    }
 }
