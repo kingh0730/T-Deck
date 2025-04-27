@@ -15,6 +15,8 @@ float rand_float(void)
 
 void classify(void)
 {
+    srand(730);
+
     float w = rand_float() * 10;
     printf("w: %f\n", w);
 }
