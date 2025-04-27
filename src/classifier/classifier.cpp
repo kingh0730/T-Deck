@@ -46,7 +46,7 @@ void classify(void)
     float epsilon = 0.01f;
     float alpha = 0.01f;
 
-    for (size_t i = 0; i < 2; i++)
+    for (size_t i = 0; i < 500; i++)
     {
         float cost_value = cost(w);
         float cost_value2 = cost(w + epsilon);
