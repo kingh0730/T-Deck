@@ -44,9 +44,9 @@ void classify(void)
 
     printf("TRAIN_SIZE: %zu\n", TRAIN_SIZE);
 
-    float w1 = rand_float() * 10.0f;
-    float w2 = rand_float() * 10.0f;
-    float b = rand_float() * 5.0f;
+    float w1 = rand_float() * 1.0f;
+    float w2 = rand_float() * 1.0f;
+    float b = rand_float() * 1.0f;
     printf("w1: %f, w2: %f, b: %f\n", w1, w2, b);
 
     float cost_value = cost(w1, w2, b);
@@ -55,7 +55,7 @@ void classify(void)
     float epsilon = 0.01f;
     float alpha = 0.01f;
 
-    for (size_t i = 0; i < 500; i++)
+    for (size_t i = 0; i < 1 * 1000 * 1000; i++)
     {
         float dw1 = (cost(w1 + epsilon, w2, b) - cost(w1, w2, b)) / epsilon;
         float dw2 = (cost(w1, w2 + epsilon, b) - cost(w1, w2, b)) / epsilon;
