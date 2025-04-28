@@ -169,6 +169,11 @@ void classify(void)
         float x2 = train[i][1];
         float y = train[i][2];
         float z = forward(m, x1, x2);
-        printf("x1: %f, x2: %f, y: %f, z: %f\n", x1, x2, y, z);
+
+        float a = sigmoid(x1 * m.or_w1 + x2 * m.or_w2 + m.or_b);
+        float b = sigmoid(x1 * m.nand_w1 + x2 * m.nand_w2 + m.nand_b);
+        float c = sigmoid(x1 * m.and_w1 + x2 * m.and_w2 + m.and_b);
+
+        printf("x1: %f, x2: %f, y: %f, xor: %f, and: %f, or: %f, c: %f\n", x1, x2, y, z, a, b, c);
     }
 }
