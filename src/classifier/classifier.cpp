@@ -181,7 +181,8 @@ void classify(void)
         float c = sigmoid(x1 * m.and_w1 + x2 * m.and_w2 + m.and_b);
 
         printf(
-            "x1: %f, x2: %f, y: %f, xor: %f, and: %f, or: %f, c: %f\n",
+            "x1: %f, x2: %f, y: %f, xor: %f, "
+            "and: %f, or: %f, x2 AND NOT x1: %f\n",
             x1, x2, y, z, a, b, c);
     }
 }
