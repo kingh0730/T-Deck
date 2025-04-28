@@ -182,7 +182,7 @@ void classify(void)
 
         printf(
             "x1: %f, x2: %f, y: %f, xor: %f, "
-            "and: %f, or: %f, x2 AND NOT x1: %f\n",
+            "AND: %f, OR: %f, x2 AND NOT x1: %f\n",
             x1, x2, y, z, a, b, c);
     }
 }
