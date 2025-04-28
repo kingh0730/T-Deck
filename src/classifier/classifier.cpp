@@ -17,9 +17,15 @@ typedef struct Xor
 
 void print_xor(Xor &m)
 {
-    printf("or_w1: %f, or_w2: %f, or_b: %f\n", m.or_w1, m.or_w2, m.or_b);
-    printf("nand_w1: %f, nand_w2: %f, nand_b: %f\n", m.nand_w1, m.nand_w2, m.nand_b);
-    printf("and_w1: %f, and_w2: %f, and_b: %f\n", m.and_w1, m.and_w2, m.and_b);
+    printf(
+        "or_w1: %f, or_w2: %f, or_b: %f\n",
+        m.or_w1, m.or_w2, m.or_b);
+    printf(
+        "nand_w1: %f, nand_w2: %f, nand_b: %f\n",
+        m.nand_w1, m.nand_w2, m.nand_b);
+    printf(
+        "and_w1: %f, and_w2: %f, and_b: %f\n",
+        m.and_w1, m.and_w2, m.and_b);
 }
 
 float train[][3] = {
@@ -174,6 +180,8 @@ void classify(void)
         float b = sigmoid(x1 * m.nand_w1 + x2 * m.nand_w2 + m.nand_b);
         float c = sigmoid(x1 * m.and_w1 + x2 * m.and_w2 + m.and_b);
 
-        printf("x1: %f, x2: %f, y: %f, xor: %f, and: %f, or: %f, c: %f\n", x1, x2, y, z, a, b, c);
+        printf(
+            "x1: %f, x2: %f, y: %f, xor: %f, and: %f, or: %f, c: %f\n",
+            x1, x2, y, z, a, b, c);
     }
 }
